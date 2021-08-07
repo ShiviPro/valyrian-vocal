@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap");
+:root {
+  --white: #dff9fb;
+  --black: #353b48;
+  --purple: #6c33a3;
+  --gold: #e1b12c;
+}
+
+::selection {
+  background-color: var(--white);
+}
+
+body {
+  text-align: center;
+  font-family: "Uncial Antiqua", serif;
+  background-color: var(--purple);
+  background-image: linear-gradient(316deg, #6c33a3 0%, #8241b8 74%);
+  color: var(--gold);
+}
+
+.brand-name {
+  font-size: 3rem;
+  font-weight: 400;
+}
+
+hr {
+  width: 600px;
+  margin: 20px auto;
+  border: 1px solid var(--gold);
+}
+
+.eng-input,
+.val-output {
+  padding: 20px;
+  width: 500px;
+  height: 170px;
+  font-size: 1.2rem;
+  border: 4px solid var(--black);
+  border-radius: 20px;
+  background-color: var(--gold);
+  font-family: inherit;
+  color: var(--purple);
+  outline: none;
+}
+
+.eng-input::placeholder,
+.val-output::placeholder {
+  color: var(--purple);
+}
+
+.translate-btn {
+  padding: 10px;
+  font-size: 1.3rem;
+  margin: 20px 0;
+  border: 2px solid var(--black);
+  border-radius: 10px;
+  font-family: inherit;
+  font-weight: 600;
+  background-color: var(--gold);
+  transition: background-color 350ms, color 350ms border-color 350ms;
+}
+
+.translate-btn:hover {
+  background-color: var(--purple);
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+.about {
+  text-align: left;
+  width: 550px;
+  margin: 20px auto;
+}
+
+.about__heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.about__content {
+  font-size: 1.4rem;
+  margin-top: 0;
+}
