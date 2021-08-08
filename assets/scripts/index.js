@@ -5,10 +5,6 @@ const output = document.querySelector("#val-output");
 const translationURL =
   "https://api.funtranslations.com/translate/valyrian.json";
 
-const handleErrors = (response) => {
-  console.log(response);
-};
-
 btn.addEventListener("click", () => {
   let engInput = input.value;
   let loading = document.createElement("div");
@@ -23,7 +19,7 @@ btn.addEventListener("click", () => {
     btn.innerText = btnTextBackup;
   };
 
-  let translationData = fetch(translationURL + "?text=" + engInput)
+  fetch(translationURL + "?text=" + engInput)
     .then((response) => {
       switch (response.status) {
         case 429:
@@ -55,6 +51,7 @@ btn.addEventListener("click", () => {
             "Sorry, I am tired & hence, unable to return the answer in time. Please try again some other time.";
           break;
       }
+      return response;
     })
     .then((translationData) => translationData.json())
     .then((translationDataJSON) => translationDataJSON.contents.translated)
