@@ -22,12 +22,6 @@ btn.addEventListener("click", () => {
   fetch(translationURL + "?text=" + engInput)
     .then((response) => {
       switch (response.status) {
-        case 429:
-          removeLoading();
-          output.innerText =
-            "Hmmm.. It seems you have utilized your 5 wishes for this hour ! Please try again in the next one.";
-          break;
-
         case 404:
           removeLoading();
           output.innerText =
@@ -54,7 +48,19 @@ btn.addEventListener("click", () => {
       return response;
     })
     .then((translationData) => translationData.json())
-    .then((translationDataJSON) => translationDataJSON.contents.translated)
+    .then((translationDataJSON) => {
+      if (translationDataJSON.error.code === 429) {
+        let errorMessage = translationDataJSON.error.message;
+        let timeIndex = errorMessage.indexOf("for");
+        let time = errorMessage.toString().substring(timeIndex);
+        return (
+          "Hmmm.. It seems you have utilized your 5 wishes for this hour ! Please wait " +
+          time +
+          " Then try again."
+        );
+      }
+      return translationDataJSON.contents.translated;
+    })
     .then((translatedText) => {
       removeLoading();
       output.innerText = translatedText;

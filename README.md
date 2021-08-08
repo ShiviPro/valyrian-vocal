@@ -20,4 +20,4 @@ Well as it's name might suggest, [Valyrian Vocal](https://valyrianvocal.netlify.
 
 _This project is made with [Fun Translation's API](https://funtranslations.com/api/valyrian). Check them out, if you want more pop culture centric APIs or translators._
 
-_Please Note - Since I am using the public API(free version) calls, the web app only handles 5 requests per hour due to ratelimiting by Fun Translation's API. So only 5 translations can be done in an hour. I know it might sound brutal to hardcore fans; Least I did around this is preventing your translations from being unresponsive, by making the app tell you if all the translations for an hour have been exhausted or not._
+_Please Note - Since I am using the public API(free version) calls, the web app only handles 5 requests per hour due to ratelimiting by Fun Translation's API. So only 5 translations can be done in an hour. I know it might sound brutal to hardcore fans; Least I did around this is preventing your translations from being unresponsive, by making the app tell you if all the translations for an hour have been exhausted or not. And if exhausted, when to try again._
