@@ -18,10 +18,13 @@ btn.addEventListener("click", () => {
     loading.remove();
     btn.innerText = btnTextBackup;
   };
-
+  let hasSurpassedRateLimit = false;
   fetch(translationURL + "?text=" + engInput)
     .then((response) => {
       switch (response.status) {
+        case 429:
+          hasSurpassedRateLimit = true;
+          break;
         case 404:
           removeLoading();
           output.innerText =
@@ -49,7 +52,7 @@ btn.addEventListener("click", () => {
     })
     .then((translationData) => translationData.json())
     .then((translationDataJSON) => {
-      if (translationDataJSON.error.code === 429) {
+      if (hasSurpassedRateLimit && translationDataJSON.error.code === 429) {
         let errorMessage = translationDataJSON.error.message;
         let timeIndex = errorMessage.indexOf("for");
         let time = errorMessage.toString().substring(timeIndex);

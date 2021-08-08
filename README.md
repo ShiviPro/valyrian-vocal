@@ -18,6 +18,8 @@ And, as you might have comprehended by now, Valyrian (as, in the noun) is the la
 
 Well as it's name might suggest, [Valyrian Vocal](https://valyrianvocal.netlify.app/) is a web app that can help you vocalize yourself in Valyrian; meaning that it can translate your English to Valyrian.
 
+![valyrian-vocal-demo-img](./assets/images/demos/demo1.png)
+
 _This project is made with [Fun Translation's API](https://funtranslations.com/api/valyrian). Check them out, if you want more pop culture centric APIs or translators._
 
 _Please Note - Since I am using the public API(free version) calls, the web app only handles 5 requests per hour due to ratelimiting by Fun Translation's API. So only 5 translations can be done in an hour. I know it might sound brutal to hardcore fans; Least I did around this is preventing your translations from being unresponsive, by making the app tell you if all the translations for an hour have been exhausted or not. And if exhausted, when to try again._
