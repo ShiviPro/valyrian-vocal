@@ -5,16 +5,14 @@ const output = document.querySelector("#val-output");
 const translationURL =
   "https://api.funtranslations.com/translate/valyrian.json";
 
-const handleError = (errorMessage) => {
-  output.innerText = errorMessage;
-};
+const handleError = errorMessage => output.innerText = errorMessage;
 
 btn.addEventListener("click", () => {
-  let engInput = input.value;
-  let loading = document.createElement("div");
+  const engInput = input.value;
+  const loading = document.createElement("div");
   loading.classList.add("loading");
 
-  let btnTextBackup = btn.innerText;
+  const btnTextBackup = btn.innerText;
   btn.innerText = "";
   btn.appendChild(loading);
 
@@ -23,8 +21,8 @@ btn.addEventListener("click", () => {
     btn.innerText = btnTextBackup;
   };
   let hasSurpassedRateLimit = false;
-  fetch(translationURL + "?text=" + engInput)
-    .then((response) => {
+  fetch(`${translationURL}?text=${engInput}`)
+    .then(response => {
       switch (response.status) {
         case 429:
           hasSurpassedRateLimit = true;
@@ -47,25 +45,19 @@ btn.addEventListener("click", () => {
       }
       return response;
     })
-    .then((translationData) => translationData.json())
-    .then((translationDataJSON) => {
+    .then(translationData => translationData.json())
+    .then(translationDataJSON => {
       if (hasSurpassedRateLimit && translationDataJSON.error.code === 429) {
-        let errorMessage = translationDataJSON.error.message;
-        let timeIndex = errorMessage.indexOf("for");
-        let time = errorMessage.toString().substring(timeIndex);
-        return (
-          "Hmmm.. It seems you have utilized your 5 wishes for this hour ! Please wait " +
-          time +
-          " Then try again."
-        );
+        const errorMessage = translationDataJSON.error.message;
+        const timeIndex = errorMessage.indexOf("for");
+        const time = errorMessage.toString().substring(timeIndex);
+        return `Hmmm.. It seems you have utilized your 5 wishes for this hour ! Please wait ${time} Then try again.`;
       }
       return translationDataJSON.contents.translated;
     })
-    .then((translatedText) => {
+    .then(translatedText => {
       removeLoading();
       output.innerText = translatedText;
     })
-    .catch((errorMessage) => {
-      handleError(errorMessage);
-    });
+    .catch(errorMessage => handleError(errorMessage));
 });
